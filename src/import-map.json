@@ -1,0 +1,6 @@
+{
+  "imports": {
+    "vue": "https://cdn.jsdelivr.net/npm/@vue/runtime-dom@3.2.22/dist/runtime-dom.esm-browser.js/+esm",
+    "@vueuse/core": "https://cdn.jsdelivr.net/npm/@vueuse/core/+esm"
+  }
+}
