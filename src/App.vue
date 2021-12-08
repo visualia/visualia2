@@ -29,7 +29,12 @@ watchEffect(() => history.replaceState({}, "", store.serialize()));
 </script>
 
 <template>
-  <Repl :sfcOptions="sfcOptions" :store="store" :showCompileOutput="false" />
+  <Repl
+    :sfcOptions="sfcOptions"
+    :store="store"
+    :showCompileOutput="false"
+    :clearConsole="false"
+  />
 </template>
 
 <style>
