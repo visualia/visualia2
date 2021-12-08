@@ -1,13 +1,13 @@
 {
   "name": "vite",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "visualia2": "^0.1.11",
+    "visualia2": "latest",
     "vue": "^3.2.23"
   },
   "devDependencies": {
