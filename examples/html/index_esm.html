@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="importmap">
+      {
+        "imports": {
+          "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js",
+          "visualia2": "https://unpkg.com/visualia2/dist/visualia.js"
+        }
+      }
+    </script>
+    <script type="module">
+      import { createApp, ref } from "vue";
+      import { VSlider, hsla } from "visualia2";
+      const App = {
+        components: { VSlider },
+        setup() {
+          const a = ref(0);
+          return { a, hsla };
+        },
+        template: `
+          <VSlider v-model="a" />
+          <br />
+          <input type="range" v-model="a" /> 
+          <br />
+          {{ hsla(a) }}
+        `,
+      };
+      const app = createApp(App);
+      app.mount("#app");
+    </script>
+  </body>
+</html>
