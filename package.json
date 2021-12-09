@@ -1,10 +1,11 @@
 {
   "name": "visualia2",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "files": [
     "dist",
     "src"
   ],
+  "type": "module",
   "main": "./dist/visualia.cjs",
   "module": "./dist/visualia.js",
   "exports": {
@@ -13,10 +14,10 @@
       "require": "./dist/visualia.cjs"
     }
   },
-  "type": "module",
+  "typings": "./dist/visualia.d.ts",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && vue-tsc --declaration --emitDeclarationOnly",
     "serve": "vite preview"
   },
   "dependencies": {
@@ -26,6 +27,7 @@
     "@vitejs/plugin-vue": "^1.9.2",
     "@vue/repl": "^0.4.4",
     "typescript": "^4.4.3",
-    "vite": "^2.6.0"
+    "vite": "^2.6.0",
+    "vue-tsc": "^0.29.8"
   }
 }
