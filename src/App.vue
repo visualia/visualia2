@@ -6,6 +6,7 @@ import "@vue/repl/style.css";
 import App from "./AppSample.vue?raw";
 import visualia from "./visualia.js?raw";
 import utils from "./utils/index.js?raw";
+import VMath from "./components/VMath.vue?raw";
 import VSlider from "./components/VSlider.vue?raw";
 import ImportMap from "./import-map.json?raw";
 
@@ -16,6 +17,7 @@ store.setFiles({
   "App.vue": App,
   "visualia.js": visualia,
   "utils/index.js": utils,
+  "components/VMath.vue": VMath,
   "components/VSlider.vue": VSlider,
   "import-map.json": ImportMap,
 });
