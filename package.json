@@ -34,6 +34,8 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "visualia2": "^0.1.12",
+    "vitepress": "^0.20.5",
     "vue": "^3.2.26"
   },
   "devDependencies": {

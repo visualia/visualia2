@@ -1,0 +1,8 @@
+{
+  "name": "vitepress",
+  "private": true,
+  "dependencies": {
+    "visualia2": "latest",
+    "vitepress": "latest"
+  }
+}
