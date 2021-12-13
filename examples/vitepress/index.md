@@ -7,8 +7,6 @@ const a = $ref(0);
 
 <VSlider v-model="a" />
 
-<input type="range" v-model="a" />
-
 {{ hsla(a) }}
 
 <svg width="200" height="200">
