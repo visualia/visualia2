@@ -1,8 +1,6 @@
 <script setup>
-import { VSlider, hsla } from "visualia2";
-
 const a = $ref(0);
-const b = $computed(() => hsla(a, 100))
+//const b = $computed(() => hsla(a, 100))
 </script>
 
 # Vitepress
@@ -11,4 +9,8 @@ const b = $computed(() => hsla(a, 100))
 
 <input type="range" v-model="a" />
 
-{{ b }}
+{{ hsla(a) }}
+
+<svg width="200" height="200">
+  <circle cx="100" cy="100" r="50" :fill="hsla(a)" />
+</svg>
