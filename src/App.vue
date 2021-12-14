@@ -30,6 +30,7 @@ const baseFiles = {
 };
 
 globRaw(import.meta.glob("./{utils,components}/*")).then((files) => {
+  console.log(files);
   store.setFiles({ ...baseFiles, ...files });
 });
 
