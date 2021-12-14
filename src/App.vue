@@ -3,18 +3,20 @@ import { watchEffect } from "vue";
 import { Repl, ReplStore } from "@vue/repl";
 import "@vue/repl/style.css";
 
-function globRaw(glob: Record<string, () => Promise<{ [key: string]: any }>>) {
+function getFiles(paths: string[]) {
   return Promise.all(
-    Object.keys(glob).map((path) => import(/* @vite-ignore */ `${path}?raw`))
+    paths.map((path) => import(/* @vite-ignore */ `${path}?raw`))
   ).then((res) => {
-    return Object.fromEntries(
-      res.map((u, i) => [Object.keys(glob)[i].replace("\.\/", ""), u.default])
-    );
+    return res.map((r) => r.default);
   });
 }
 
+import { components, utils } from "./visualia";
+
 import AppSample from "./AppSample.vue?raw";
 import visualia from "./visualia.js?raw";
+import componentsIndex from "./components/index.js?raw";
+import utilsIndex from "./utils/index.js?raw";
 import ImportMap from "./import-map.json?raw";
 
 const store = new ReplStore({
@@ -26,11 +28,24 @@ const store = new ReplStore({
 const baseFiles = {
   "App.vue": AppSample,
   "visualia.js": visualia,
+  "components/index.js": componentsIndex,
+  "utils/index.js": utilsIndex,
   "import-map.json": ImportMap,
 };
 
-const files = await globRaw(import.meta.glob("./{utils,components}/*"));
-store.setFiles({ ...baseFiles, ...files });
+const componentFilePaths = Object.entries(components).map(
+  (c) => c[1].__file || ""
+);
+const componentFileSources = await getFiles(componentFilePaths);
+const componentFiles = Object.fromEntries(
+  componentFileSources.map((file, i) => [
+    `${Object.entries(components)[i][0]}.vue`,
+    componentFileSources[i],
+  ])
+);
+
+console.log(componentFiles);
+store.setFiles({ ...baseFiles, ...componentFiles });
 
 const sfcOptions = {
   script: {
