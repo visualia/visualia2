@@ -43,7 +43,7 @@ const sfcOptions = {
   <Repl
     :sfcOptions="sfcOptions"
     :store="store"
-    :showCompileOutput="true"
+    :showCompileOutput="false"
     :clearConsole="false"
   />
 </template>

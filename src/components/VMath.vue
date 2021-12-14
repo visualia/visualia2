@@ -7,9 +7,9 @@ const slots = useSlots();
 
 if (slots && slots.default) {
   watch(
-    () => slots.default(),
+    () => slots.default?.(),
     (nodes) => {
-      const node = nodes[0].children;
+      const node = nodes?.[0].children;
       math.value = katex.renderToString(String.raw`${node}`, {
         throwOnError: false,
       });
