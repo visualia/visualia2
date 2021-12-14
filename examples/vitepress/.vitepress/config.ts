@@ -10,7 +10,6 @@ function VisualiaMarkdownIt(md) {
     const info = unescapeAll(tokens[idx].info).trim();
     if (info === "vue") {
       const { html } = renderer.render(tokens[idx].content || "");
-      console.log(html);
       return `
         ${defaultRender(...arguments)}
         <VCompiler content='${html}' />
