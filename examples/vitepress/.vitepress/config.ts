@@ -9,11 +9,15 @@ function VisualiaMarkdownIt(md) {
     const [tokens, idx, options, env, slf] = arguments;
     const info = unescapeAll(tokens[idx].info).trim();
     if (info === "vue") {
-      const a = renderer.render(tokens[idx].content);
-      console.log(a);
-      return `${defaultRender(...arguments)}<pre>${escapeHtml(
-        tokens[idx].content
-      )}</pre>`;
+      const { html } = renderer.render(tokens[idx].content || "");
+      console.log(html);
+      return `
+        ${defaultRender(...arguments)}
+        <VCompiler content='${html}' />
+      `;
+      //   return `${defaultRender(...arguments)}<pre>${escapeHtml(
+      //     tokens[idx].content
+      //   )}</pre>`;
     }
     return defaultRender(...arguments);
     /*
