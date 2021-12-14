@@ -44,8 +44,16 @@ const componentFiles = Object.fromEntries(
   ])
 );
 
-console.log(componentFiles);
-store.setFiles({ ...baseFiles, ...componentFiles });
+const utilsFilePaths = utilsIndex
+  .match(/"(.*?)"/g)!
+  .map((file) => file.replace(/"/g, "").replace(/\.\//g, ""));
+const utilsFileSources = await getFiles(
+  utilsFilePaths.map((f) => `./utils/${f}`)
+);
+const utilsFiles = Object.fromEntries(
+  utilsFilePaths.map((file, i) => [file, utilsFileSources[i]])
+);
+store.setFiles({ ...baseFiles, ...componentFiles, ...utilsFiles });
 
 const sfcOptions = {
   script: {
