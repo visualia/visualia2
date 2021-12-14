@@ -3,9 +3,9 @@ import { watchEffect } from "vue";
 import { Repl, ReplStore } from "@vue/repl";
 import "@vue/repl/style.css";
 
-function globRaw(glob) {
+function globRaw(glob: Record<string, () => Promise<{ [key: string]: any }>>) {
   return Promise.all(
-    Object.keys(glob).map((path) => import(`${path}?raw`))
+    Object.keys(glob).map((path) => import(/* @vite-ignore */ `${path}?raw`))
   ).then((res) => {
     return Object.fromEntries(
       res.map((u, i) => [Object.keys(glob)[i].replace("\.\/", ""), u.default])
@@ -20,6 +20,8 @@ import ImportMap from "./import-map.json?raw";
 const store = new ReplStore({
   //serializedState: location.hash.slice(1),
 });
+
+//watchEffect(() => history.replaceState({}, "", store.serialize()));
 
 const baseFiles = {
   "App.vue": AppSample,
@@ -36,15 +38,13 @@ const sfcOptions = {
     reactivityTransform: true,
   },
 };
-
-watchEffect(() => history.replaceState({}, "", store.serialize()));
 </script>
 
 <template>
   <Repl
     :sfcOptions="sfcOptions"
     :store="store"
-    :showCompileOutput="false"
+    :showCompileOutput="true"
     :clearConsole="false"
   />
 </template>
