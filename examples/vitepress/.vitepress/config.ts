@@ -1,5 +1,7 @@
-import { defineConfig } from "vitepress";
-import { assign, unescapeAll, escapeHtml } from "markdown-it/lib/common/utils";
+import { defineConfig, createMarkdownRenderer } from "vitepress";
+import { unescapeAll, escapeHtml } from "markdown-it/lib/common/utils";
+
+const renderer = createMarkdownRenderer("");
 
 function VisualiaMarkdownIt(md) {
   const defaultRender = md.renderer.rules.fence;
@@ -7,6 +9,8 @@ function VisualiaMarkdownIt(md) {
     const [tokens, idx, options, env, slf] = arguments;
     const info = unescapeAll(tokens[idx].info).trim();
     if (info === "vue") {
+      const a = renderer.render(tokens[idx].content);
+      console.log(a);
       return `${defaultRender(...arguments)}<pre>${escapeHtml(
         tokens[idx].content
       )}</pre>`;

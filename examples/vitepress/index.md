@@ -6,7 +6,8 @@ const a = $ref(0);
 <script setup>
 const a = $ref(0);
 </script>
-<template>Pingo pango</template>
+
+# Hello world!
 ```
 
 # Hello Visualia
