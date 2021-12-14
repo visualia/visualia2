@@ -2,14 +2,9 @@
 import { watchEffect } from "vue";
 import { Repl, ReplStore } from "@vue/repl";
 import "@vue/repl/style.css";
+import { getFiles } from "./lib";
 
-async function getRawFiles(paths: string[]) {
-  return Promise.all(
-    paths.map((path) => import(/* @vite-ignore */ `${path}?raw`))
-  ).then((res) => {
-    return res.map((r) => r.default);
-  });
-}
+// Raw imports
 
 import AppSample from "./AppSample.vue?raw";
 import visualia from "./visualia.js?raw";
@@ -31,16 +26,6 @@ const baseFiles = {
   "components/index.js": componentsIndex,
   "utils/index.js": utilsIndex,
 };
-
-async function getFiles(source: any, path: any) {
-  const filePaths = String(source)
-    .match(/"(.*?)"/g)!
-    .map((file: any) => file.replace(/"/g, "").replace(/\.\//g, ""));
-  const rawFiles = await getRawFiles(filePaths.map((f) => `./${path}/${f}`));
-  return Object.fromEntries(
-    filePaths.map((file: any, i) => [file, rawFiles[i]])
-  );
-}
 
 const componentsFiles = await getFiles(componentsIndex, "components");
 const utilsFiles = await getFiles(utilsIndex, "utils");
