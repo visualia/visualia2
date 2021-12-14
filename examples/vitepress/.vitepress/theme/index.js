@@ -1,8 +1,10 @@
 import DefaultTheme from "vitepress/theme";
 import { VSlider, hsla } from "visualia2";
 
-import { onErrorCaptured, inject, computed, h } from "vue";
+import { computed, h, reactive } from "vue";
 import { compile } from "vue/dist/vue.esm-bundler.js";
+
+export const v = reactive({});
 
 export const compileSource = (source) => {
   const errors = [];
@@ -25,7 +27,7 @@ const VCompiler = {
   setup(props) {
     const compiledContent = computed(() => ({
       setup() {
-        //return { ...utils };
+        return { v };
       },
       render: compile(props.content),
     }));
@@ -40,5 +42,6 @@ export default {
     app.component("VSlider", VSlider);
     app.component("VCompiler", VCompiler);
     app.config.globalProperties.hsla = hsla;
+    app.config.globalProperties.v = v;
   },
 };
