@@ -25,14 +25,19 @@ export const compileSource = (source) => {
 const VCompiler = {
   props: ["content"],
   setup(props) {
+    const { code, errors } = compileSource(props.content);
     const compiledContent = computed(() => ({
       setup() {
         return { v };
       },
-      render: compile(props.content),
+      render: code,
     }));
-
-    return () => (compiledContent.value ? h(compiledContent.value) : null);
+    return () =>
+      errors.length
+        ? errors
+            .map(String)
+            .map((e) => h("div", { style: { color: "red" } }, e))
+        : h(compiledContent.value);
   },
 };
 

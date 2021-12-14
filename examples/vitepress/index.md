@@ -9,7 +9,7 @@ const a = $ref(100)
 {{ v }}
 
 ```vue
-# Hello
+# Hello!
 
 <v-slider v-model="v.a" />
 ```
