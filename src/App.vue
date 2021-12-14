@@ -29,10 +29,8 @@ const baseFiles = {
   "import-map.json": ImportMap,
 };
 
-globRaw(import.meta.glob("./{utils,components}/*")).then((files) => {
-  console.log(files);
-  store.setFiles({ ...baseFiles, ...files });
-});
+const files = await globRaw(import.meta.glob("./{utils,components}/*"));
+store.setFiles({ ...baseFiles, ...files });
 
 const sfcOptions = {
   script: {
