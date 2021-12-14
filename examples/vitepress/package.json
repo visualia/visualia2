@@ -2,6 +2,7 @@
   "name": "vitepress",
   "private": true,
   "dependencies": {
+    "markdown-it": "^12.3.0",
     "visualia2": "latest",
     "vitepress": "latest"
   },

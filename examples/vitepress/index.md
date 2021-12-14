@@ -2,6 +2,10 @@
 const a = $ref(0);
 </script>
 
+```v
+Example
+```
+
 # Hello Visualia
 
 <VSlider v-model="a" />
