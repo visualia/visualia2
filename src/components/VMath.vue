@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, useSlots, watch } from "vue";
 import katex from "katex";
 

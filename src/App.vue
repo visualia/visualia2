@@ -3,30 +3,40 @@ import { watchEffect } from "vue";
 import { Repl, ReplStore } from "@vue/repl";
 import "@vue/repl/style.css";
 
-import App from "./AppSample.vue?raw";
+function globRaw(glob) {
+  return Promise.all(
+    Object.keys(glob).map((path) => import(`${path}?raw`))
+  ).then((res) => {
+    return Object.fromEntries(
+      res.map((u, i) => [Object.keys(glob)[i].replace("\.\/", ""), u.default])
+    );
+  });
+}
+
+import AppSample from "./AppSample.vue?raw";
 import visualia from "./visualia.js?raw";
-import utils from "./utils/index.js?raw";
-import VSlider from "./components/VSlider.vue?raw";
-import VMath from "./components/VMath.vue?raw";
 import ImportMap from "./import-map.json?raw";
 
 const store = new ReplStore({
-  serializedState: location.hash.slice(1),
+  //serializedState: location.hash.slice(1),
 });
-store.setFiles({
-  "App.vue": App,
+
+const baseFiles = {
+  "App.vue": AppSample,
   "visualia.js": visualia,
-  "utils/index.js": utils,
-  "components/VSlider.vue": VSlider,
-  "components/VMath.vue": VMath,
   "import-map.json": ImportMap,
+};
+
+globRaw(import.meta.glob("./{utils,components}/*")).then((files) => {
+  store.setFiles({ ...baseFiles, ...files });
 });
+
 const sfcOptions = {
   script: {
-    refTransform: true,
-    propsDestructureTransform: true,
+    reactivityTransform: true,
   },
 };
+
 watchEffect(() => history.replaceState({}, "", store.serialize()));
 </script>
 
