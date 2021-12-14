@@ -3,7 +3,7 @@ import { watchEffect } from "vue";
 import { Repl, ReplStore } from "@vue/repl";
 import "@vue/repl/style.css";
 
-function getFiles(paths: string[]) {
+async function getRawFiles(paths: string[]) {
   return Promise.all(
     paths.map((path) => import(/* @vite-ignore */ `${path}?raw`))
   ).then((res) => {
@@ -11,13 +11,12 @@ function getFiles(paths: string[]) {
   });
 }
 
-import { components, utils } from "./visualia";
-
 import AppSample from "./AppSample.vue?raw";
 import visualia from "./visualia.js?raw";
+import ImportMap from "./import-map.json?raw";
+
 import componentsIndex from "./components/index.js?raw";
 import utilsIndex from "./utils/index.js?raw";
-import ImportMap from "./import-map.json?raw";
 
 const store = new ReplStore({
   //serializedState: location.hash.slice(1),
@@ -28,32 +27,25 @@ const store = new ReplStore({
 const baseFiles = {
   "App.vue": AppSample,
   "visualia.js": visualia,
+  "import-map.json": ImportMap,
   "components/index.js": componentsIndex,
   "utils/index.js": utilsIndex,
-  "import-map.json": ImportMap,
 };
 
-const componentFilePaths = Object.entries(components).map(
-  (c) => c[1].__file || ""
-);
-const componentFileSources = await getFiles(componentFilePaths);
-const componentFiles = Object.fromEntries(
-  componentFileSources.map((file, i) => [
-    `${Object.entries(components)[i][0]}.vue`,
-    componentFileSources[i],
-  ])
-);
+async function getFiles(source: any, path: any) {
+  const filePaths = String(source)
+    .match(/"(.*?)"/g)!
+    .map((file: any) => file.replace(/"/g, "").replace(/\.\//g, ""));
+  const rawFiles = await getRawFiles(filePaths.map((f) => `./${path}/${f}`));
+  return Object.fromEntries(
+    filePaths.map((file: any, i) => [file, rawFiles[i]])
+  );
+}
 
-const utilsFilePaths = utilsIndex
-  .match(/"(.*?)"/g)!
-  .map((file) => file.replace(/"/g, "").replace(/\.\//g, ""));
-const utilsFileSources = await getFiles(
-  utilsFilePaths.map((f) => `./utils/${f}`)
-);
-const utilsFiles = Object.fromEntries(
-  utilsFilePaths.map((file, i) => [file, utilsFileSources[i]])
-);
-store.setFiles({ ...baseFiles, ...componentFiles, ...utilsFiles });
+const componentsFiles = await getFiles(componentsIndex, "components");
+const utilsFiles = await getFiles(utilsIndex, "utils");
+
+store.setFiles({ ...baseFiles, ...componentsFiles, ...utilsFiles });
 
 const sfcOptions = {
   script: {
