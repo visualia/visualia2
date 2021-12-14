@@ -11,5 +11,5 @@ const progress = computed({
 </script>
 
 <template>
-  <input type="range" v-model.number="progress" /> / {{ progress }}
+  <input type="range" v-model.number="progress" />
 </template>
