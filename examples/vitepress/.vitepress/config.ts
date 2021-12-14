@@ -3,10 +3,15 @@ import { assign, unescapeAll, escapeHtml } from "markdown-it/lib/common/utils";
 
 function VisualiaMarkdownIt(md) {
   const defaultRender = md.renderer.rules.fence;
-  md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
+  md.renderer.rules.fence = function () {
+    const [tokens, idx, options, env, slf] = arguments;
     const info = unescapeAll(tokens[idx].info).trim();
-    console.log(info);
-    return tokens[idx].info + defaultRender(tokens, idx, options, env, slf);
+    if (info === "vue") {
+      return `${defaultRender(...arguments)}<pre>${escapeHtml(
+        tokens[idx].content
+      )}</pre>`;
+    }
+    return defaultRender(...arguments);
     /*
     var token = tokens[idx],
       info = token.info ? unescapeAll(token.info).trim() : "",

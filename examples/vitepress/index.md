@@ -2,8 +2,11 @@
 const a = $ref(0);
 </script>
 
-```v
-Example
+```vue
+<script setup>
+const a = $ref(0);
+</script>
+<template>Pingo pango</template>
 ```
 
 # Hello Visualia
