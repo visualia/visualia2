@@ -1,10 +1,10 @@
 <script setup>
 import { VSlider, hsla } from "./visualia.js";
-
-let a = $ref(0);
+const a = $ref(0);
 </script>
 
 <template>
+  <h1>Hello Visualia</h1>
   <VSlider v-model="a" />
   <br />
   <input type="range" v-model="a" />
