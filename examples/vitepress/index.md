@@ -1,9 +1,8 @@
 <script setup>
 const a = $ref(0);
-//const b = $computed(() => hsla(a, 100))
 </script>
 
-# Vitepress
+# Hello Visualia
 
 <VSlider v-model="a" />
 
