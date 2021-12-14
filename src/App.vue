@@ -7,6 +7,7 @@ import App from "./AppSample.vue?raw";
 import visualia from "./visualia.js?raw";
 import utils from "./utils/index.js?raw";
 import VSlider from "./components/VSlider.vue?raw";
+import VMath from "./components/VMath.vue?raw";
 import ImportMap from "./import-map.json?raw";
 
 const store = new ReplStore({
@@ -17,6 +18,7 @@ store.setFiles({
   "visualia.js": visualia,
   "utils/index.js": utils,
   "components/VSlider.vue": VSlider,
+  "components/VMath.vue": VMath,
   "import-map.json": ImportMap,
 });
 const sfcOptions = {
