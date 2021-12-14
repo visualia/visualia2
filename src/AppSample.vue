@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { VSlider, VMath, hsla } from "./visualia.js";
 const h = $ref(0);
 const fill = $computed(() => hsla(h));

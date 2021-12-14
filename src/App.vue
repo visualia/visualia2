@@ -2,32 +2,41 @@
 import { watchEffect } from "vue";
 import { Repl, ReplStore } from "@vue/repl";
 import "@vue/repl/style.css";
+import { getFiles } from "./lib";
 
-import App from "./AppSample.vue?raw";
+// Raw imports
+
+import AppSample from "./AppSample.vue?raw";
 import visualia from "./visualia.js?raw";
-import utils from "./utils/index.js?raw";
-import VSlider from "./components/VSlider.vue?raw";
-import VMath from "./components/VMath.vue?raw";
 import ImportMap from "./import-map.json?raw";
 
+import componentsIndex from "./components/index.js?raw";
+import utilsIndex from "./utils/index.js?raw";
+
 const store = new ReplStore({
-  serializedState: location.hash.slice(1),
+  //serializedState: location.hash.slice(1),
 });
-store.setFiles({
-  "App.vue": App,
+
+//watchEffect(() => history.replaceState({}, "", store.serialize()));
+
+const baseFiles = {
+  "App.vue": AppSample,
   "visualia.js": visualia,
-  "utils/index.js": utils,
-  "components/VSlider.vue": VSlider,
-  "components/VMath.vue": VMath,
   "import-map.json": ImportMap,
-});
+  "components/index.js": componentsIndex,
+  "utils/index.js": utilsIndex,
+};
+
+const componentsFiles = await getFiles(componentsIndex, "components");
+const utilsFiles = await getFiles(utilsIndex, "utils");
+
+store.setFiles({ ...baseFiles, ...componentsFiles, ...utilsFiles });
+
 const sfcOptions = {
   script: {
-    refTransform: true,
-    propsDestructureTransform: true,
+    reactivityTransform: true,
   },
 };
-watchEffect(() => history.replaceState({}, "", store.serialize()));
 </script>
 
 <template>
