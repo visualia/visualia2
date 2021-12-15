@@ -1,13 +1,19 @@
 <script setup>
-const a = $ref(0);
+const a = $ref(100)
 </script>
 
-# Hello Visualia
+# Hello
 
-<VSlider v-model="a" />
+<v-slider v-model="v.a" />
 
-{{ hsla(a) }}
+{{ v }}
 
-<svg width="200" height="200">
-  <circle cx="100" cy="100" r="50" :fill="hsla(a)" />
-</svg>
+```md
+# Hello!
+
+Test here. [test](http://google.com)
+
+<v-slider v-model="v.a" />
+
+> v.a is {{ v }}
+```
