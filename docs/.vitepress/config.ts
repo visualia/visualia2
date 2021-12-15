@@ -1,5 +1,6 @@
 import { defineConfig, createMarkdownRenderer } from "vitepress";
 import { VisualiaMarkdownIt } from "../../src/utils/markdownit";
+import { sidebar } from "./sidebar";
 
 export default defineConfig({
   title: "Visualia",
@@ -13,5 +14,6 @@ export default defineConfig({
     docsDir: "docs",
     editLinks: true,
     editLinkText: "Page source",
+    sidebar,
   },
 });
