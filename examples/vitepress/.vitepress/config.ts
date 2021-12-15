@@ -8,7 +8,7 @@ function VisualiaMarkdownIt(md) {
   md.renderer.rules.fence = function () {
     const [tokens, idx, options, env, slf] = arguments;
     const info = unescapeAll(tokens[idx].info).trim();
-    if (info === "vue") {
+    if (info === "md") {
       const { html } = renderer.render(tokens[idx].content || "");
       return `
         ${defaultRender(...arguments)}
