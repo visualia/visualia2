@@ -2,7 +2,6 @@
   "name": "vitepress",
   "private": true,
   "dependencies": {
-    "@vue/compiler-dom": "^3.2.26",
     "markdown-it": "^12.3.0",
     "visualia2": "latest",
     "vitepress": "latest"
