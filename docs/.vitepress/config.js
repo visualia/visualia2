@@ -4,7 +4,6 @@ import { VisualiaMarkdownIt } from "../../src/utils/markdownit.js";
 export default defineConfig({
   title: "Visualia",
   markdown: {
-    breaks: true,
     config: (md) =>
       md.use(VisualiaMarkdownIt, createMarkdownRenderer("").render),
   },

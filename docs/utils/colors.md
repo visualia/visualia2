@@ -19,17 +19,9 @@ hsl(h: number, s: number, l: number): string
 ```md
 Hover over the colors to see how `h` value changes
 
-<svg :width="360 * 2" height="100">
-  <rect
-    v-for="h in range(0,360)"
-    :x="h"
-    y="0"
-    width="2"
-    height="100"
-    :fill="hsl(h,100,50)"
-    v-on:mouseover="v.h = h"
-  />
-</svg>
+<v-svg width="360" height="40">
+  <rect v-for="h in range(0,360)" :x="h" y="0" width="1" height="100" :fill="hsl(h,100,50)" v-on:mouseover="v.h = h" />
+</v-svg>
 
 > `hsl({{ v.h ?? 0 }},100,50)`
 ```
