@@ -31,8 +31,8 @@ To animate a global variable, you need to use `v-model="v.x"` where `x` is a var
 
 > The value of x is {{ v.x }}
 
-<svg width="400" height="40">
-  <circle :cx="v.x" cy="20" r="10" />
+<svg width="400" height="100">
+  <circle :cx="v.x" cy="50" r="10" />
 </svg>
 ```
 
