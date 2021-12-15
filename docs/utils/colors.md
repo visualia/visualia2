@@ -1,3 +1,5 @@
+# Colors
+
 ## hsl
 
 Ouputs a CSS color string in [hsl() notation](<https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsl()>).
@@ -14,7 +16,7 @@ hsl(h: number, s: number, l: number): string
 
 #### Example: Changing hue
 
-```html
+```md
 Hover over the colors to see how `h` value changes
 
 <svg :width="360 * 2" height="40">
@@ -34,7 +36,7 @@ Hover over the colors to see how `h` value changes
 
 #### Example: Changing saturation
 
-```html
+```md
 Hover over the colors to see how `s` value changes
 
 <svg :width="100 * 2" height="40">
@@ -54,7 +56,7 @@ Hover over the colors to see how `s` value changes
 
 #### Example: Changing lightness
 
-```html
+```md
 Hover over the colors to see how `l` value changes
 
 <svg :width="100 * 2" height="40">
