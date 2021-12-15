@@ -3,7 +3,7 @@ export function VisualiaMarkdownIt(md, render) {
   md.renderer.rules.fence = function () {
     const [tokens, idx, _options, _env, _slf] = arguments;
     const info = tokens[idx].info.trim();
-    if (info === "md") {
+    if (info === "html") {
       const { html } = render(tokens[idx].content || "");
       return `
         ${defaultRender(...arguments)}
