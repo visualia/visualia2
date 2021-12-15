@@ -6,7 +6,7 @@ const x = $ref(0);
 
 `<v-slider />` is a component that changes a numeric variable with a slider.
 
-#### Usage with local variable
+#### Usage with script setup
 
 ```vue
 <script setup>
@@ -24,7 +24,9 @@ const x = $ref(0);
 
 #### Usage with global variable
 
-To animate a global variable, you need to use `v-model="v.x"` where `x` is a variable name. You can use `v.x` value to control the SVG `<circle />` (or anything, really) on the page:
+To animate a global variable, you need to prefix the model name with `v`, for example `v.x`.
+
+You can use that variable to control the SVG `<circle />` position on the page (or anything, really).
 
 ```md
 <v-svg width="400" height="100">
@@ -59,5 +61,5 @@ Note that step attribute can also be set to `step="any"` that makes slider to em
 
 <v-slider v-model="v.x3" max="400" step="any" />
 
-> The value of x3 is <br /> {{ v.x3 || 0 }}
+> The value of x3 is <br /> {{ v.x3 }}
 ```

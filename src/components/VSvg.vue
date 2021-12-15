@@ -13,6 +13,8 @@ const {
   centered?: boolean;
 }>();
 
+const svgRef = ref(null);
+
 const size = computed(() => {
   const p = parseFloat(String(padding));
   const w = parseFloat(String(width)) + p * 2;
@@ -23,10 +25,8 @@ const size = computed(() => {
   const style = {
     maxWidth: `${w}px`,
   };
-  return { w, h, wb, style };
+  return { wb, style };
 });
-
-const svgRef = ref(null);
 </script>
 
 <template>
@@ -37,9 +37,7 @@ const svgRef = ref(null);
       :view-box.camel="size.wb"
       :style="size.style"
     >
-      <g ref="groupRef">
-        <slot />
-      </g>
+      <slot />
     </svg>
   </p>
 </template>

@@ -37,7 +37,7 @@ export default defineConfig({
               children: [
                 {
                   text: "Colors",
-                  children: [{ text: "hsl / hsla", link: "/utils/colors/hsl" }],
+                  children: [{ text: "hsl", link: "/utils/colors/hsl" }],
                 },
               ],
             },
