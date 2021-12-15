@@ -3,6 +3,11 @@
   --c-brand-light: #f87171; /* purple-600 */
 }
 
-svg {
-  border: 1px solid blue;
+@media (max-width: 800px) {
+  input[type="range"] {
+    width: 100%;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    transform: scale(1.75);
+  }
 }

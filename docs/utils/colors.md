@@ -19,7 +19,7 @@ hsl(h: number, s: number, l: number): string
 ```md
 Hover over the colors to see how `h` value changes
 
-<v-svg width="360" height="40">
+<v-svg width="360" height="100">
   <rect v-for="h in range(0,360)" :x="h" y="0" width="1" height="100" :fill="hsl(h,100,50)" v-on:mouseover="v.h = h" />
 </v-svg>
 
@@ -31,12 +31,12 @@ Hover over the colors to see how `h` value changes
 ```md
 Hover over the colors to see how `s` value changes
 
-<svg :width="100 * 2" height="100">
+<svg :width="100" height="100">
   <rect
     v-for="s in range(0,100)"
     :x="s"
     y="0"
-    width="2"
+    width="1"
     height="100"
     :fill="hsl(0,s,50)"
     v-on:mouseover="v.s = s"
@@ -51,12 +51,12 @@ Hover over the colors to see how `s` value changes
 ```md
 Hover over the colors to see how `l` value changes
 
-<svg :width="100 * 2" height="100">
+<svg :width="100" height="100">
   <rect
     v-for="l in range(0,100)"
     :x="l"
     y="0"
-    width="2"
+    width="1"
     height="100"
     :fill="hsl(0,100,l)"
     v-on:mouseover="v.l = l"
