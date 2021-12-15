@@ -1,3 +1,4 @@
+import { defineComponent } from "vue";
 import * as components from "./components/index.js";
 export { components };
 export * from "./components/index.js";
