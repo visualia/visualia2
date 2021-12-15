@@ -1,6 +1,4 @@
-# Colors
-
-## hsl
+# hsl
 
 Ouputs a CSS color string in [hsl() notation](<https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsl()>).
 
@@ -10,14 +8,14 @@ hsl(h: number, s: number, l: number): string
 
 `hsl()` accepts following parameters:
 
-`h` as **hue** ranging from 0 to 360
+`h` as **hue** from 0 to 360
 `s` as **saturation** from 0 to 100
 `l` as **lightness** from 0 to 100
 
-#### Example: Changing hue
+#### Changing hue
 
 ```md
-Hover over the colors to see how `h` value changes
+Hover or tap over the colors to see how `h` value changes
 
 <v-svg width="360" height="100">
   <rect v-for="h in range(0,360)" :x="h" y="0" width="1" height="100" :fill="hsl(h,100,50)" v-on:mouseover="v.h = h" />
@@ -26,10 +24,10 @@ Hover over the colors to see how `h` value changes
 > `hsl({{ v.h ?? 0 }},100,50)`
 ```
 
-#### Example: Changing saturation
+#### Changing saturation
 
 ```md
-Hover over the colors to see how `s` value changes
+Hover or tap over the colors to see how `s` value changes
 
 <svg :width="100" height="100">
   <rect
@@ -46,10 +44,10 @@ Hover over the colors to see how `s` value changes
 > `hsl(0,{{ v.s ?? 0 }},50)`
 ```
 
-#### Example: Changing lightness
+#### Changing lightness
 
 ```md
-Hover over the colors to see how `l` value changes
+Hover or tap over the colors to see how `l` value changes
 
 <svg :width="100" height="100">
   <rect
@@ -65,3 +63,5 @@ Hover over the colors to see how `l` value changes
 
 > `hsl(0,100,{{ v.l ?? 0 }})`
 ```
+
+# hsla
