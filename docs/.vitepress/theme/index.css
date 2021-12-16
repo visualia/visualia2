@@ -1,0 +1,13 @@
+:root {
+  --c-brand: #ef4444;
+  --c-brand-light: #f87171;
+}
+
+@media (max-width: 800px) {
+  input[type="range"] {
+    width: 100%;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    transform: scale(1.75);
+  }
+}

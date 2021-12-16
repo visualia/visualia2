@@ -9,3 +9,4 @@ declare module "*.vue" {
 }
 
 declare module "@vue/repl";
+declare module "vue/dist/vue.esm-bundler.js";
