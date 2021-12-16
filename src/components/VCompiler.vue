@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, h, defineProps } from "vue";
+import { computed, h } from "vue";
 import { compile } from "vue/dist/vue.esm-bundler.js";
 import { utils } from "../visualia";
 
