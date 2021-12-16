@@ -1,6 +1,6 @@
 <script lang="ts">
 import { computed, h } from "vue";
-import { compile } from "vue/dist/vue.esm-bundler.js";
+import { compile } from "vue/dist/vue.cjs.js";
 import { utils } from "../visualia";
 
 export const compileSource = (source: string) => {
