@@ -7,7 +7,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "visualia2": "latest",
+    "visualia2": "^0.1.15",
     "vue": "^3.2.23"
   },
   "devDependencies": {

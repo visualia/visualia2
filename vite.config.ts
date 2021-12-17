@@ -11,7 +11,7 @@ export default defineConfig({
   },
   plugins: [
     vue({
-      reactivityTransform: true,
+      script: { reactivityTransform: true },
     }),
   ],
   build: {

@@ -1,15 +1,22 @@
-<script setup>
-import { ref } from 'vue'
-import { VSlider, hsla } from "visualia2";
-
-const a = ref(0);
+<script setup lang="ts">
+import { hsl } from "visualia2";
+const h = $ref(0);
+const fill = $computed(() => hsl(h));
 </script>
 
 <template>
-  <VSlider v-model="a" />
+  <h1>Hello Visualia</h1>
+  <VMath>h = {{ h }} \degree</VMath>
   <br />
-  <input type="range" v-model="a" /> 
+  {{ hsl(h) }}
   <br />
-  {{ hsla(a) }}
+  <VSlider v-model="h" to="360" />
+  <br />
+  <svg width="200" height="200">
+    <circle cx="100" cy="100" r="50" :fill="fill" />
+  </svg>
 </template>
 
+<style>
+@import url("https://unpkg.com/katex/dist/katex.css");
+</style>

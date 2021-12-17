@@ -1,4 +1,3 @@
-//@ts-ignore
-import { hsla } from "https://unpkg.com/visualia2/dist/visualia.js";
+import { hsla } from "https://unpkg.com/visualia2/src/utils/index.js";
 
 console.log(hsla(10));
