@@ -2,9 +2,8 @@
   "name": "vitepress",
   "private": true,
   "dependencies": {
-    "markdown-it": "^12.3.0",
-    "visualia2": "latest",
-    "vitepress": "latest"
+    "visualia2": "^0.1.15",
+    "vitepress": "^0.20.9"
   },
   "scripts": {
     "dev": "vitepress dev",

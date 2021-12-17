@@ -4,16 +4,18 @@ const a = $ref(100)
 
 # Hello
 
+<v-slider v-model="a" />
+
+{{ a }}
+
 <v-slider v-model="v.a" />
 
-{{ v }}
+{{ v.a }}
 
 ```md
-# Hello!
-
-Test here. [test](http://google.com)
+# Hello
 
 <v-slider v-model="v.a" />
 
-> v.a is {{ v }}
+{{ v.a }}
 ```

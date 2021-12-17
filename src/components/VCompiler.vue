@@ -1,6 +1,5 @@
 <script lang="ts">
-import { computed, h } from "vue";
-import { compile } from "vue/dist/vue.cjs.js";
+import { computed, h, compile, ComponentOptions } from "vue";
 import { utils } from "../visualia";
 
 export const compileSource = (source: string) => {
@@ -34,7 +33,7 @@ export default {
         ? errors
             .map(String)
             .map((e) => h("div", { style: { color: "red" } }, e))
-        : h(compiledContent.value);
+        : h(compiledContent.value as ComponentOptions);
   },
 };
 </script>
