@@ -1,7 +1,5 @@
 <script lang="ts">
-//@ts-ignore
-import { computed, h, ComputedRef, ComponentOptions } from "vue";
-import { compile } from "vue";
+import { computed, h, compile, ComponentOptions } from "vue";
 import { utils } from "../visualia";
 
 export const compileSource = (source: string) => {
