@@ -25,3 +25,7 @@ Optionally, modify the `/vite.config.js` a below, this allows to use the shorter
 Finally, edit the `/src/App.vue` to use Visualia's component and utilities:
 
 <<< @/../examples/vite/src/App.vue
+
+## Deno
+
+<<< @/../examples/deno/index.ts
