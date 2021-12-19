@@ -12,7 +12,6 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        "vue/compiler-sfc": "@vue/compiler-sfc",
         vue: "vue/dist/vue.esm-browser.prod.js",
       },
     },
