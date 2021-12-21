@@ -8,7 +8,7 @@ export function VisualiaMarkdownIt(md, render) {
       const { html } = render(tokens[idx].content || "");
       return `
         ${defaultFence(...arguments)}
-        <VCompiler content='${html}' />
+        <p>${html}</p>
       `;
     }
     return defaultFence(...arguments);
