@@ -38,9 +38,7 @@
     "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
-    "@vue/compiler-sfc": "^3.2.26",
-    "katex": "^0.15.1",
-    "vue": "^3.2.26"
+    "katex": "^0.15.1"
   },
   "devDependencies": {
     "@types/katex": "^0.11.1",

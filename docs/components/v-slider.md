@@ -8,7 +8,7 @@ const x = $ref(0);
 
 #### Usage with script setup
 
-```vue
+```md
 <script setup>
 const x = $ref(0);
 </script>
@@ -17,10 +17,6 @@ const x = $ref(0);
 
 > The value of x is {{ x }}
 ```
-
-<v-slider v-model="x" />
-
-> The value of x is {{ x }}
 
 #### Usage with global variable
 
