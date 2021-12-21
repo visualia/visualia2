@@ -7,9 +7,4 @@ export default defineConfig({
       md.use(VisualiaMarkdownIt, createMarkdownRenderer("").render),
   },
   vue: { reactivityTransform: true },
-  vite: {
-    resolve: {
-      alias: { vue: "vue/dist/vue.esm-browser.prod.js" },
-    },
-  },
 });
